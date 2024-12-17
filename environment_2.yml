@@ -1,0 +1,9 @@
+name: Practical_work_2
+channels:
+  - conda-forge
+dependencies:
+  - python = 3.12
+  - requests
+  - selenium
+  - webdriver-manager
+  - pytest

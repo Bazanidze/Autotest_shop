@@ -1,0 +1,11 @@
+name: Practical_work
+channels:
+  - conda-forge
+dependencies:
+  - python = 3.12
+  - requests
+  - selenium
+  - python-chromedriver-binary = 133.0.6888.2.0
+  - pytest
+
+
