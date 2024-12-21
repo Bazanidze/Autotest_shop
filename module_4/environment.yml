@@ -1,4 +1,4 @@
-name: skillbox_1
+name: skillbox
 channels:
   - conda-forge
 dependencies:
