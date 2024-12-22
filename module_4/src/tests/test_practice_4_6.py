@@ -17,9 +17,12 @@ class TestExample:
     def test_2(self, set_up_browser):
         driver = set_up_browser
         driver.get("https://github.com/microsoft/vscode/issues")
+        text = 'bpasero'
         test_in_author = driver.find_element(By.CSS_SELECTOR, '[data-testid="authors-anchor-button"]')
         test_in_author.click()
-        time.sleep(1)
+        test_bpasero = driver.find_element(By.CSS_SELECTOR, 'input[placeholder="Filter authors"]')
+        test_bpasero.click()
+        test_bpasero.send_keys(text)
         test_bpasero = driver.find_element(By.XPATH, "//span[contains(text(), 'bpasero')]")
         test_bpasero.click()
         pass
