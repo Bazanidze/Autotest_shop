@@ -1,4 +1,4 @@
-name: skillbox_1
+name: skillbox
 channels:
   - conda-forge
 dependencies:
@@ -8,3 +8,5 @@ dependencies:
   - pytest
   - pytest-rerunfailures
   - make
+  - pip:
+    - allure-pytest

@@ -8,3 +8,6 @@ dependencies:
   - pytest
   - pytest-rerunfailures
   - make
+  - pip:
+    - allure-pytest
+  - flake8

@@ -4,17 +4,25 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 
-path_to_driver = 'D:/Chrome driver/chromedriver-win64.131.0.6778.108/chromedriver.exe'
-
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
 
 @pytest.fixture()
-def set_up_browser():
+def selenium(pytestconfig):
     options = ChromeOptions()
 
     # Создание объекта Service с указанием пути к Chromedriver
-    service = Service(executable_path=path_to_driver)
+    service = Service(executable_path=pytestconfig.getini("path_to_driver_chrome"))
 
     # Запуск Chrome с указанным сервисом и опциями
     driver = Chrome(service=service, options=options)
+    driver.implicitly_wait(30)
+    yield driver
+    driver.quit()
+
+@pytest.fixture()
+def selenium_local():
+    driver = Chrome(service=ChromeService(ChromeDriverManager().install()))
+    driver.implicitly_wait(30)
     yield driver
     driver.quit()

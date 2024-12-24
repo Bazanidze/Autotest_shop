@@ -5,8 +5,8 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
 class TestExample:
-    def test_1(self, set_up_browser):
-        driver = set_up_browser
+    def test_1(self, selenium_browser_driver):
+        driver = selenium_browser_driver
         driver.get("https://github.com/microsoft/vscode/issues")
         test_in_search = driver.find_element(By.CSS_SELECTOR, '[class="Input-module__Box_4--GVHsf"]')
         action_chains = webdriver.ActionChains(driver)
@@ -14,8 +14,8 @@ class TestExample:
         test_in_search.send_keys('in:title bug' + Keys.ENTER)
         pass
 
-    def test_2(self, set_up_browser):
-        driver = set_up_browser
+    def test_2(self, selenium_browser_driver):
+        driver = selenium_browser_driver
         driver.get("https://github.com/microsoft/vscode/issues")
         text = 'bpasero'
         test_in_author = driver.find_element(By.CSS_SELECTOR, '[data-testid="authors-anchor-button"]')
@@ -27,8 +27,8 @@ class TestExample:
         test_bpasero.click()
         pass
 
-    def test_3(self, set_up_browser):
-        driver = set_up_browser
+    def test_3(self, selenium_browser_driver):
+        driver = selenium_browser_driver
         driver.get("https://github.com/search/advanced")
         test_in_select = driver.find_element(By.XPATH, '(//select[@class="form-select js-advanced-search-prefix"])[1]')
         test_in_select.click()
@@ -39,13 +39,13 @@ class TestExample:
         test_repositories_options_stars.send_keys('>20000')
         test_code_options_file_name = driver.find_element(By.CSS_SELECTOR, '[placeholder="app.rb, footer.erb"]')
         test_code_options_file_name.click()
-        test_code_options_file_name.send_keys('environment.yml')
+        test_code_options_file_name.send_keys('')
         test_button_search = driver.find_element(By.XPATH, "(//button[contains(text(), 'Search')])[1]")
         test_button_search.click()
         pass
 
-    def test_4(self, set_up_browser):
-        driver = set_up_browser
+    def test_4(self, selenium_browser_driver):
+        driver = selenium_browser_driver
         driver.get("https://skillbox.ru/code/")
         driver.maximize_window()
         action_chains = webdriver.ActionChains(driver)
@@ -63,8 +63,8 @@ class TestExample:
         test_open_tematic_checkbox_python.click()
         pass
 
-    def test_5(self, set_up_browser):
-        driver = set_up_browser
+    def test_5(self, selenium_browser_driver):
+        driver = selenium_browser_driver
         driver.get("https://github.com/microsoft/vscode/graphs/commit-activity")
         driver.maximize_window()
         time.sleep(1)
