@@ -4,4 +4,3 @@ class TestExample:
         driver.get("https://skillbox.ru/")
         assert 'Skillbox' == driver.title
         pass
-

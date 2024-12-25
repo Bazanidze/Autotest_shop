@@ -9,5 +9,8 @@ dependencies:
   - pytest-rerunfailures
   - make
   - pip:
-    - allure-pytest
+      - pytest-playwright
+  - allure-pytest
   - flake8
+
+

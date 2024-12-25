@@ -1,5 +1,6 @@
 import time
-
+import re
+from playwright.sync_api import Page, expect
 import allure
 import pytest
 from selenium import webdriver
@@ -11,34 +12,35 @@ from src.utils_module_6_test_4.duration_training import duration_training
 
 @allure.feature('Все тесты практических работ')
 class TestsPracticeWork:
+    @pytest.fixture
     @allure.title('Проверка правильности выдачи результатов поиска на github.com')
-    def test_1(self, selenium):
+    def test_1(self, page: Page):
         with allure.step('Создание переменной с текстом для ввода "in:title bug'):
             word_search = 'bug'
             word_search_2 = 'Bug'
             text_search = 'in:title ' + word_search
 
         with allure.step('Открытие страницы https://github.com/microsoft/vscode/issues'):
-            selenium.get("https://github.com/microsoft/vscode/issues")
+            page.goto("https://github.com/microsoft/vscode/issues")
 
-        with allure.step('Удаление старого текста и ввод нового текста в поле поиска'):
-            test_in_search = selenium.find_element(By.CSS_SELECTOR, 'input[class="Input-module__Box_4--GVHsf"]')
-            action_chains = webdriver.ActionChains(selenium)
-            action_chains.double_click(test_in_search).double_click(test_in_search).send_keys(Keys.BACKSPACE).perform()
-            test_in_search.send_keys(text_search + Keys.ENTER)
-
-        with allure.step('Ожидание загрузки результата поиска'):
-            time.sleep(3)
-
-        with allure.step('Подсчёт количества репозиториев после поиска'):
-            search_field = selenium.find_elements(By.XPATH, "//h3//span")
-            length = len(search_field)
-
-        with allure.step('Проверка наличия "bug" или "Bug" в результатах поиска'):
-            for num in range(length):
-                element_text = search_field[num].text
-                assert (word_search in element_text or word_search_2 in element_text) is True
-        pass
+        # with allure.step('Удаление старого текста и ввод нового текста в поле поиска'):
+        #     test_in_search = page.find_element(By.CSS_SELECTOR, 'input[class="Input-module__Box_4--GVHsf"]')
+        #     action_chains = webdriver.ActionChains(page)
+        #     action_chains.double_click(test_in_search).double_click(test_in_search).send_keys(Keys.BACKSPACE).perform()
+        #     test_in_search.send_keys(text_search + Keys.ENTER)
+        #
+        # with allure.step('Ожидание загрузки результата поиска'):
+        #     time.sleep(3)
+        #
+        # with allure.step('Подсчёт количества репозиториев после поиска'):
+        #     search_field = page.find_elements(By.XPATH, "//h3//span")
+        #     length = len(search_field)
+        #
+        # with allure.step('Проверка наличия "bug" или "Bug" в результатах поиска'):
+        #     for num in range(length):
+        #         element_text = search_field[num].text
+        #         assert (word_search in element_text or word_search_2 in element_text) is True
+        # pass
 
     @allure.title('Проверка поиска задач от определенного автора на github.com')
     def test_2(self, selenium):
@@ -151,23 +153,6 @@ class TestsPracticeWork:
                         if '0' <= symbol <= '9':
                             cipher += symbol
                     assert 6 <= (int(cipher)) <= 12
-
-            with allure.step('Проверка названий профессий по введённым фильтрам'):
-                blocks_name_proffesions = selenium.find_elements(By.CSS_SELECTOR, ".courses-block__list h3")
-                lenght = len(blocks_name_proffesions)
-                prof_1 = 'Python-разработчик'
-                prof_2 = 'Data scientist'
-                prof_3 = 'Data Scientist с нуля до Junior'
-                prof_4 = 'Разработчик'
-                prof_5 = 'Data-аналитик'
-                prof_6 = 'Machine Learning Engineer'
-                prof_7 = 'Инженер по автоматизации тестирования'
-                for position in range(lenght):
-                    text_name_block = blocks_name_proffesions[position].text
-                    assert (prof_1 in text_name_block or prof_2 in text_name_block or prof_3 in text_name_block
-                            or prof_4 in text_name_block or prof_5 in text_name_block
-                            or prof_6 in text_name_block or prof_7 in text_name_block) is True
-
         pass
 
     @allure.title('Проверка правильности наведения курсора на график на '

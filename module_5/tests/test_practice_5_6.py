@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
+
 class TestExample:
     def test_1(self, selenium):
         driver = selenium
@@ -34,7 +35,8 @@ class TestExample:
         list_tasks = driver.find_elements(By.XPATH, "//div/a[contains(@aria-label, 'author')]")
         length = len(list_tasks)
         for position in range(length):
-            assert (text in (list_tasks[position].get_attribute("aria-label") and search_field.get_attribute("value"))) is True
+            assert (text in (list_tasks[position].get_attribute("aria-label") and
+                             search_field.get_attribute("value"))) is True
         pass
 
     def test_3(self, selenium):
@@ -60,7 +62,6 @@ class TestExample:
 
     def test_4(self, selenium):
         driver = selenium
-        text_type_training = 'Профессия'
         driver.get("https://skillbox.ru/code/")
         driver.maximize_window()
         action_chains = webdriver.ActionChains(driver)
@@ -71,7 +72,7 @@ class TestExample:
         action_chains.release().perform()
         action_chains.click_and_hold(test_range_right_button).move_by_offset(xoffset=-40, yoffset=10).perform()
         action_chains.release().perform()
-        driver.find_element(By.XPATH, '(//button[@class="ui-expand-button filter-checkboxes__button ui-expand-button--small"])').click()
+        driver.find_element(By.XPATH, "//h4[contains(text(), 'Тематика')]/following-sibling::button").click()
         time.sleep(1)
         driver.find_element(By.XPATH, "(//span[contains(text(), 'Python')])[2]").click()
         time.sleep(2)
@@ -83,7 +84,8 @@ class TestExample:
             label = list_labels[position].text
             if radio_status.is_selected():
                 radio_text.get_attribute("text") == label
-        list_duration = driver.find_elements(By.XPATH, "//span/ancestor::article[@class='ui-product-card']//span[contains(@class, 'card__duration')]")
+        list_duration = driver.find_elements(By.XPATH, "//span/ancestor::article[@class='ui-product-card']"
+                                                       "//span[contains(@class, 'card__duration')]")
         number_duration = len(list_duration)
         for i in range(number_duration):
             duration = list_duration[i].text
@@ -92,6 +94,23 @@ class TestExample:
                 if '0' <= symbol <= '9':
                     cipher += symbol
             assert 6 <= (int(cipher)) <= 12
+
+        blocks_name_proffesions = driver.find_elements(By.CSS_SELECTOR, ".courses-block__list h3")
+        lenght = len(blocks_name_proffesions)
+        prof_1 = 'Python-разработчик'
+        prof_2 = 'Data scientist'
+        prof_3 = 'Data Scientist с нуля до Junior'
+        prof_4 = 'Разработчик'
+        prof_5 = 'Data-аналитик'
+        prof_6 = 'Machine Learning Engineer'
+        prof_7 = 'Инженер по автоматизации тестирования'
+        for position in range(lenght):
+            text_name_block = blocks_name_proffesions[position].text
+            assert (prof_1 in text_name_block or prof_2 in text_name_block or prof_3 in text_name_block
+                    or prof_4 in text_name_block or prof_5 in text_name_block
+                    or prof_6 in text_name_block or prof_7 in text_name_block) is True
+
+
         pass
 
     def test_5(self, selenium):
@@ -105,6 +124,3 @@ class TestExample:
         text_pie = driver.find_element(By.XPATH, '//div[@class="svg-tip n"]/strong').text
         assert text_pie == '223'
         pass
-
-
-
