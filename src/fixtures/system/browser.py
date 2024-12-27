@@ -1,5 +1,5 @@
 import pytest
-import logging
+
 
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
@@ -11,12 +11,14 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 
 @pytest.fixture(scope='class')
 def selenium(pytestconfig):
+
     options = ChromeOptions()
     options.add_argument("--window-size=1920,1080")
-    logging.info('Подготовка браузера...')
+
 
     # Создание объекта Service с указанием пути к Chromedriver
     service = Service(executable_path=pytestconfig.getini("path_to_driver_chrome"))
+
 
     # Запуск Chrome с указанным сервисом и опциями
     driver = Chrome(service=service, options=options)
@@ -25,6 +27,7 @@ def selenium(pytestconfig):
     # driver.maximize_window()
     driver.implicitly_wait(30)
     yield driver
+
     driver.quit()
 
 
