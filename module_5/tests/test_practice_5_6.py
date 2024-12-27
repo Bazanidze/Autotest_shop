@@ -110,7 +110,6 @@ class TestExample:
                     or prof_4 in text_name_block or prof_5 in text_name_block
                     or prof_6 in text_name_block or prof_7 in text_name_block) is True
 
-
         pass
 
     def test_5(self, selenium):

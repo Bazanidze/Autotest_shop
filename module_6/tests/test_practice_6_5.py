@@ -1,16 +1,17 @@
 import time
+import logging
 
 import allure
-import pytest
 from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
-from src.utils_module_6_test_4.duration_training import duration_training
+from src.module_6.module_6_test_4.slide_two_button import duration_training
 
 
 @allure.feature('Все тесты практических работ')
 class TestsPracticeWork:
+    logging.info('Начало первого теста')
     @allure.title('Проверка правильности выдачи результатов поиска на github.com')
     def test_1(self, selenium):
         with allure.step('Создание переменной с текстом для ввода "in:title bug'):
@@ -39,6 +40,7 @@ class TestsPracticeWork:
                 element_text = search_field[num].text
                 assert (word_search in element_text or word_search_2 in element_text) is True
         pass
+    logging.info('Конец первого теста')
 
     @allure.title('Проверка поиска задач от определенного автора на github.com')
     def test_2(self, selenium):
@@ -109,7 +111,7 @@ class TestsPracticeWork:
 
     @allure.title('Проверка выдачи результатов по фильтрам на сайте https://skillbox.ru/code/')
     def test_4(self, selenium):
-        with allure.step('Открытие страницы https://github.com/search/advanced'):
+        with allure.step('Открытие страницы https://skillbox.ru/code/'):
             selenium.get("https://skillbox.ru/code/")
 
         with allure.step('Выбор радиобаттон "Профессия" в "Тип обучения на платформе"'):
