@@ -1,19 +1,20 @@
 import time
-
+import logging
 
 import allure
 from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
+from src.module_6.module_6_test_4.profession_name_results import profession_name
 from src.module_6.module_6_test_4.slide_two_button import duration_training
 
 
 @allure.feature('Все тесты практических работ')
 class TestsPracticeWork:
-
     @allure.title('Проверка правильности выдачи результатов поиска на github.com')
     def test_1(self, selenium):
+        logging.info('START 1 TEST')
         with allure.step('Создание переменной с текстом для ввода "in:title bug'):
             word_search = 'bug'
             word_search_2 = 'Bug'
@@ -40,10 +41,11 @@ class TestsPracticeWork:
                 element_text = search_field[num].text
                 assert (word_search in element_text or word_search_2 in element_text) is True
         pass
-
+        logging.info('END 1 TEST')
 
     @allure.title('Проверка поиска задач от определенного автора на github.com')
     def test_2(self, selenium):
+        logging.info('START 2 TEST')
         with allure.step('Создание переменной с названием автора задач'):
             text = 'bpasero'
 
@@ -68,9 +70,11 @@ class TestsPracticeWork:
                 assert (text in (list_tasks[position].get_attribute("aria-label")
                                  and search_field.get_attribute("value"))) is True
         pass
+        logging.info('END 2 TEST')
 
     @allure.title('Проверка работоспособности фильтров на github.com')
     def test_3(self, selenium):
+        logging.info('START 3 TEST')
         with allure.step('Создание переменной для поиска по рейтингу звёзд'):
             input_text_stars = 20000
 
@@ -108,9 +112,11 @@ class TestsPracticeWork:
                         checked_value += character
                 assert (int(checked_value)) > input_text_stars
         pass
+        logging.info('END 3 TEST')
 
     @allure.title('Проверка выдачи результатов по фильтрам на сайте https://skillbox.ru/code/')
     def test_4(self, selenium):
+        logging.info('START 4 TEST')
         with allure.step('Открытие страницы https://skillbox.ru/code/'):
             selenium.get("https://skillbox.ru/code/")
 
@@ -154,27 +160,16 @@ class TestsPracticeWork:
                             cipher += symbol
                     assert 6 <= (int(cipher)) <= 12
 
-            with allure.step('Проверка названий профессий по введённым фильтрам'):
-                blocks_name_proffesions = selenium.find_elements(By.CSS_SELECTOR, ".courses-block__list h3")
-                lenght = len(blocks_name_proffesions)
-                prof_1 = 'Python-разработчик'
-                prof_2 = 'Data scientist'
-                prof_3 = 'Data Scientist с нуля до Junior'
-                prof_4 = 'Разработчик'
-                prof_5 = 'Data-аналитик'
-                prof_6 = 'Machine Learning Engineer'
-                prof_7 = 'Инженер по автоматизации тестирования'
-                for position in range(lenght):
-                    text_name_block = blocks_name_proffesions[position].text
-                    assert (prof_1 in text_name_block or prof_2 in text_name_block or prof_3 in text_name_block
-                            or prof_4 in text_name_block or prof_5 in text_name_block
-                            or prof_6 in text_name_block or prof_7 in text_name_block) is True
-
+            blocks_name_professions = selenium.find_elements(By.CSS_SELECTOR, ".courses-block__list h3")
+            lenght = len(blocks_name_professions)
+            profession_name(lenght, blocks_name_professions)
         pass
+        logging.info('END 4 TEST')
 
     @allure.title('Проверка правильности наведения курсора на график на '
                   'сайте https://github.com/microsoft/vscode/graphs/commit-activity')
     def test_5(self, selenium):
+        logging.info('START 5 TEST')
         with allure.step('Открытие страницы https://github.com/microsoft/vscode/graphs/commit-activity'):
             selenium.get("https://github.com/microsoft/vscode/graphs/commit-activity")
 
@@ -190,3 +185,4 @@ class TestsPracticeWork:
             text_pie = selenium.find_element(By.XPATH, '//div[@class="svg-tip n"]/strong').text
             assert text_pie == '223'
         pass
+        logging.info('END 5 TEST')
