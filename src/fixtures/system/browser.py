@@ -23,7 +23,7 @@ def selenium(pytestconfig):
 
     # Можно еще так на весь экран раскрывать браузер
     # driver.maximize_window()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     logging.info('Browser start')
     yield driver
     logging.info('Browser exit')
