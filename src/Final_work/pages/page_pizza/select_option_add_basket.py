@@ -12,6 +12,4 @@ def select_option_add_basket(selenium):
             name_select_options.click()
         with allure.step(f'Выбрана опция: "{name_select_options.text}"'):
             name_select_options = normal_name_option_pizza(name_select_options.text)
-    with allure.step('Нажатие кнопки "В корзину", добавление пиццы в корзину'):
-        selenium.find_element(By.XPATH, '//button[contains(text(), "В корзину")]').click()
     return name_select_options

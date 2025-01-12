@@ -2,6 +2,8 @@ import allure
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+from src.Final_work.price_products.normal_price_product_and_option import normal_price_product
+
 
 def filter_max_price(selenium):
     with allure.step('Изменение фильтра "Максимальная цена" товара'):
@@ -26,15 +28,7 @@ def filter_max_price(selenium):
                 price_product = all_products[position].text
 
                 with allure.step(f'Цена {position + 1} товара: {price_product}'):
-                    price_product = price_product[0:-1]
-                    new_price_product = ''
-                    for sym in price_product:
-                        symbol = ','
-                        if symbol == sym:
-                            symbol = '.'
-                            new_price_product += symbol
-                        else:
-                            new_price_product += sym
+                    price_product = normal_price_product(price_product)
 
                     with allure.step('Проверка: Товар с ценной, не превышает, максимальную цену в фильтре'):
-                        assert (float(new_price_product) <= int(max_price_filter)) is True
+                        assert (float(price_product) <= int(max_price_filter)) is True

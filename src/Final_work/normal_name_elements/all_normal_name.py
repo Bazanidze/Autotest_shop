@@ -17,16 +17,12 @@ def normal_name_option_pizza(name_option):
 
 
 def normal_name_pizza(name_pizza):
-    with allure.step(f"Название пиццы из: '{name_pizza}'"):
-        name_pizza = name_pizza.upper()
-        name_pizza = name_pizza[7:-1]
-        with allure.step(f"Название пиццы: '{name_pizza}'"):
-            return name_pizza
+    name_pizza = name_pizza[7:-1]
+    with allure.step(f"Название пиццы: '{name_pizza}'"):
+        return name_pizza
 
 
 def normal_name_dessert(name_dessert):
-    with allure.step(f"Название десерта из: '{name_dessert}'"):
-        name_dessert = name_dessert.upper()
-        name_dessert = name_dessert[8:-1]
-        with allure.step(f"Название десерта: '{name_dessert}'"):
-            return name_dessert
+    name_dessert = name_dessert[8:-1]
+    with allure.step(f"Название десерта: '{name_dessert}'"):
+        return name_dessert

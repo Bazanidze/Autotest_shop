@@ -1,11 +1,14 @@
+import time
+
 import allure
 from selenium.webdriver.common.by import By
 
 
 def delete_all_product(selenium):
     with allure.step('Удаление всего товара из корзины'):
-        selenium.get('https://pizzeria.skillbox.cc/cart/')
-        delete_product_basket = selenium.find_elements(By.CSS_SELECTOR, 'a[class="remove"]')
+        delete_product_basket = selenium.find_elements(By.XPATH, '(//a[@class="remove"])')
         count = len(delete_product_basket)
         for position in range(count):
-            delete_product_basket[position].click()
+            selenium.find_element(By.XPATH, '(//a[@class="remove"])[1]').click()
+            time.sleep(1.5)
+            pass
