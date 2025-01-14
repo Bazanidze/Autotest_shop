@@ -3,12 +3,11 @@ import time
 import allure
 from selenium.webdriver.common.by import By
 
-
-from src.Final_work.pages.basket_page.normal_name_product_basket import normal_name_product_basket
-
-
-from src.Final_work.pages.main_page.buttons_section_main_page.all_buttons import button_basket
-from src.Final_work.price_products.normal_price_product_and_option import normal_price_product
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.basket_page.check_product_basket import check_product_basket
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.main_page.buttons_section_main_page.all_buttons import \
+    button_basket
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.price_products.normal_price_product_and_option import \
+    normal_price_product
 
 
 def add_pizza_basket(selenium):
@@ -25,4 +24,4 @@ def add_pizza_basket(selenium):
 
     button_basket(selenium)
     name_pizza = name_pizza.upper()
-    normal_name_product_basket(selenium, name_pizza, price_pizza)
+    check_product_basket(selenium, name_pizza, price_pizza)

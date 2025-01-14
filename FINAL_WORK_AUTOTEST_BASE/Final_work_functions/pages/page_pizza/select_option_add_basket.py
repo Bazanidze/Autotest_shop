@@ -1,7 +1,7 @@
 import allure
 from selenium.webdriver.common.by import By
 
-from src.Final_work.normal_name_elements.all_normal_name import normal_name_option_pizza
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.normal_name_elements.all_normal_name import normal_name_option_pizza
 
 
 def select_option_add_basket(selenium):

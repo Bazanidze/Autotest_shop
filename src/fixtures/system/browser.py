@@ -30,9 +30,9 @@ def selenium(pytestconfig):
     driver.quit()
 
 
-@pytest.fixture()
-def selenium_local():
-    driver = Chrome(service=ChromeService(ChromeDriverManager().install()))
-    driver.implicitly_wait(30)
-    yield driver
-    driver.quit()
+# @pytest.fixture()
+# def selenium_local():
+#     driver = Chrome(service=ChromeService(ChromeDriverManager().install()))
+#     driver.implicitly_wait(30)
+#     yield driver
+#     driver.quit()

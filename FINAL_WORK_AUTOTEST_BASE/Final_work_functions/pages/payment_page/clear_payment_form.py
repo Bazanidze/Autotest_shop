@@ -6,10 +6,6 @@ from selenium.webdriver.common.by import By
 
 
 def clear_payment_form(selenium):
-    city = 'г. Иваново'
-    state = 'Ивановская обл.'
-    postcode = '111111'
-    number_phone = '81111111212'
     action_chains = webdriver.ActionChains(selenium)
     with allure.step('Очистка страницы оформления заказа:'):
         with allure.step('Очистка поля ввода "Имя"'):

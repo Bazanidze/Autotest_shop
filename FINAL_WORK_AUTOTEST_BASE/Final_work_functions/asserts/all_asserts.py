@@ -1,7 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 
-from src.Final_work.price_products.normal_price_product_and_option import normal_price_product
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.price_products.normal_price_product_and_option import \
+    normal_price_product
 
 
 def check_name_product_add_basket(name_product, basket_name_product):

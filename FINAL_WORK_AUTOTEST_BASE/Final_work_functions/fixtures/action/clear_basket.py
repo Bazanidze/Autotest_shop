@@ -4,7 +4,8 @@ import pytest
 import allure
 from selenium.webdriver.common.by import By
 
-from src.Final_work.pages.main_page.buttons_section_main_page.all_buttons import button_basket
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.main_page.buttons_section_main_page.all_buttons import \
+    button_basket
 
 
 class ClearBasket:

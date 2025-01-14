@@ -1,7 +1,7 @@
 import allure
 from selenium.webdriver.common.by import By
 
-from src.Final_work.asserts.all_asserts import check_authorized
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.asserts.all_asserts import check_authorized
 
 
 def authorized_user(selenium):

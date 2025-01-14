@@ -3,8 +3,9 @@ import random
 import allure
 from selenium.webdriver.common.by import By
 
-from src.Final_work.asserts.all_asserts import check_registration_completed
-from src.Final_work.pages.authorization_page.click_buttons.button_registration import button_registration
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.asserts.all_asserts import check_registration_completed
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.authorization_page.click_buttons.button_registration import \
+    button_registration
 
 
 def correct_registration_account(selenium):

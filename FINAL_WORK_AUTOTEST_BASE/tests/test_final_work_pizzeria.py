@@ -2,51 +2,62 @@ import allure
 
 from selenium.webdriver.common.by import By
 
-from src.Final_work.add_product_basket.add_desert_basket import add_dessert_basket
-from src.Final_work.add_product_basket.add_pizza_basket import add_pizza_basket
-from src.Final_work.asserts.all_asserts import check_name_option_pizza_add_basket, \
-    check_go_pizza_page, check_empty_basket, check_menu_page, check_desserts_page, \
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.add_product_basket.add_desert_basket import add_dessert_basket
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.add_product_basket.add_pizza_basket import add_pizza_basket
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.asserts.all_asserts import check_go_pizza_page, \
+    check_name_option_pizza_add_basket, check_empty_basket, check_menu_page, check_desserts_page, \
     check_payment_no_authorized, check_open_my_account_page_no_authorized, check_open_registration_page, \
     check_summ_products_basket, check_summ_after_payment
-from src.Final_work.pages.authorization_page.authorized_user import authorized_user
-
-from src.Final_work.pages.authorization_page.click_buttons.button_registration import button_registration
-from src.Final_work.pages.basket_page.check_option_add_pizza import check_option_add_pizza
-
-from src.Final_work.pages.basket_page.click_buttons.delete_all_product import delete_all_product
-from src.Final_work.pages.basket_page.click_buttons.delete_promocode import delete_promocode
-from src.Final_work.pages.basket_page.click_buttons.increasing_product import increasing_product
-from src.Final_work.pages.basket_page.click_buttons.proceed_payment import button_proceed_payment
-from src.Final_work.pages.basket_page.click_buttons.reducing_product import reducing_product
-
-from src.Final_work.pages.basket_page.normal_name_product_basket import normal_name_product_basket
-from src.Final_work.fixtures.action.clear_basket import ClearBasket
-from src.Final_work.fixtures.action.de_authorized import DeAuthorized
-
-from src.Final_work.fixtures.open_pages.pages import OpenPage
-from src.Final_work.pages.bonus_programm_page.apply_bonus_programm import apply_bonus_programm
-from src.Final_work.pages.main_page.buttons_section_main_page.all_buttons import button_basket, button_menu, \
-    button_my_account, button_main, button_bonus_programm
-
-from src.Final_work.pages.main_page.main_page_slider_pizza.click_buttons.click_right_slider_pizza import \
-    click_right_slider_pizza
-from src.Final_work.pages.main_page.main_page_slider_pizza.main_page_slider_pizza import main_page_slider_pizza_names
-from src.Final_work.pages.main_page.main_page_slider_pizza.right_slider_pizza import right_slider_pizza
-from src.Final_work.pages.menu_page.filtr_price.filter_max_price import filter_max_price
-from src.Final_work.pages.menu_page.rubricator.select_desserts import select_desserts_rubricator_menu
-
-from src.Final_work.normal_name_elements.all_normal_name import normal_name_pizza
-from src.Final_work.pages.main_page.main_page_slider_pizza.click_buttons.click_left_slider_pizza import \
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.fixtures.action.clear_basket import ClearBasket
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.fixtures.action.de_authorized import DeAuthorized
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.fixtures.open_pages.pages import OpenPage
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.normal_name_elements.all_normal_name import normal_name_pizza
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.authorization_page.authorized_user import authorized_user
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.authorization_page.click_buttons.button_registration import \
+    button_registration
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.basket_page.check_option_add_pizza import \
+    check_option_add_pizza
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.basket_page.check_product_basket import check_product_basket
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.basket_page.click_buttons.delete_all_product import \
+    delete_all_product
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.basket_page.click_buttons.delete_promocode import \
+    delete_promocode
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.basket_page.click_buttons.increasing_product import \
+    increasing_product
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.basket_page.click_buttons.proceed_payment import \
+    button_proceed_payment
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.basket_page.click_buttons.reducing_product import \
+    reducing_product
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.bonus_programm_page.apply_bonus_programm import \
+    apply_bonus_programm
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.main_page.buttons_section_main_page.all_buttons import \
+    button_basket, button_menu, button_my_account, button_main, button_bonus_programm
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages. \
+    main_page.main_page_slider_pizza.click_buttons.click_left_slider_pizza import \
     click_left_slider_pizza
-from src.Final_work.pages.page_pizza.add_basket import button_basket_pizza_page
-
-from src.Final_work.pages.page_pizza.name_pizza import name_pizza_page_pizza
-from src.Final_work.pages.page_pizza.select_option_add_basket import select_option_add_basket
-from src.Final_work.pages.payment_page.activate_promocode import activate_promocode
-from src.Final_work.pages.payment_page.clear_payment_form import clear_payment_form
-from src.Final_work.pages.payment_page.completion_payment_form import completion_payment_form
-from src.Final_work.pages.registration_page.registration_account import correct_registration_account
-from src.Final_work.price_products.normal_price_product_and_option import normal_price_product
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.main_page. \
+    main_page_slider_pizza.click_buttons.click_right_slider_pizza import \
+    click_right_slider_pizza
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.main_page.main_page_slider_pizza. \
+    main_page_slider_pizza import \
+    main_page_slider_pizza_names
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.main_page.main_page_slider_pizza.right_slider_pizza import \
+    right_slider_pizza
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.menu_page.filtr_price.filter_max_price import filter_max_price
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.menu_page.rubricator.select_desserts import \
+    select_desserts_rubricator_menu
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.page_pizza.add_basket import button_basket_pizza_page
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.page_pizza.name_pizza import name_pizza_page_pizza
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.page_pizza.select_option_add_basket import \
+    select_option_add_basket
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.payment_page.activate_promocode import activate_promocode
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.payment_page.clear_payment_form import clear_payment_form
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.payment_page.completion_payment_form import \
+    completion_payment_form
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.registration_page.registration_account import \
+    correct_registration_account
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.price_products.normal_price_product_and_option import \
+    normal_price_product
 
 
 @allure.feature("Все тесты финальной работы. Автотесты на Python. Базовая часть")
@@ -55,14 +66,12 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
     @allure.title("Тест-кейс №1: Проверка названий пицц в слайдере при загрузке главной страницы")
     def test_case_1(self, selenium, main_page):
         main_page_slider_pizza_names(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title("Тест-кейс №2: Добавление пиццы из слайдера в корзину и проверка по названию, "
                   "что добавлена верная пицца")
     def test_case_2(self, selenium, main_page):
         add_pizza_basket(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title("Тест-кейс №3: Проверка кнопок 'влево' и 'вправо' слайдера пицц на главной странице")
@@ -71,7 +80,6 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         right_slider_pizza(selenium)
         click_left_slider_pizza(selenium)
         main_page_slider_pizza_names(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title("Тест-кейс №4: Переход на страницу пиццы с главной страницы")
@@ -88,7 +96,6 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         name_page_pizza = name_pizza_page_pizza(selenium)
         name_page_pizza = normal_name_pizza(name_page_pizza)
         check_go_pizza_page(name_pizza_main_page, name_page_pizza)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title("Тест-кейс №5: Добавление пиццы в корзину с дополнительной опцией")
@@ -99,10 +106,9 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         price_product = normal_price_product(price_product)
         button_basket_pizza_page(selenium)
         button_basket(selenium)
-        normal_name_product_basket(selenium, name_page_pizza, price_product)
+        check_product_basket(selenium, name_page_pizza, price_product)
         basket_name_option_pizza = check_option_add_pizza(selenium)
         check_name_option_pizza_add_basket(name_select_options, basket_name_option_pizza)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title("Тест-кейс №6: Увеличение и уменьшение количества товара в корзине")
@@ -110,7 +116,6 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         add_pizza_basket(selenium)
         increasing_product(selenium)
         reducing_product(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title("Тест-кейс №7: Удаление пиццы из корзины")
@@ -118,33 +123,28 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         add_pizza_basket(selenium)
         delete_all_product(selenium)
         check_empty_basket(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title("Тест-кейс №8: Переход со страницы 'Корзина' на страницу 'Меню'")
     def test_case_8(self, selenium, basket_page):
         button_menu(selenium)
         check_menu_page(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title('Тест-кейс №9: Переход на страницу "Десерты" через рубрикатор "Меню"')
     def test_case_9(self, selenium, main_page):
         select_desserts_rubricator_menu(selenium)
         check_desserts_page(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title('Тест-кейс №10: Изменение фильтра "максимальная цена" на странице "Десерты"')
     def test_case_10(self, selenium, desserts_page):
         filter_max_price(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title('Тест-кейс №11: Добавление товара "Десерт" в корзину ')
     def test_case_11(self, selenium, desserts_page):
         add_dessert_basket(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title('Тест-кейс №12: Оформление заказа не авторизованным пользователем')
@@ -152,7 +152,6 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         add_pizza_basket(selenium)
         button_proceed_payment(selenium)
         check_payment_no_authorized(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title('Тест-кейс №13: Переход на страницу "Мой аккаунт" со страницы оформление заказа')
@@ -160,7 +159,6 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         check_payment_no_authorized(selenium)
         button_my_account(selenium)
         check_open_my_account_page_no_authorized(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title('Тест-кейс №14: Переход на страницу формы "Регистрация" со страницы "Мой аккаунт"'
@@ -168,19 +166,16 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
     def test_case_14(self, selenium, clear_basket, my_account_page):
         button_registration(selenium)
         check_open_registration_page(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title('Тест-кейс №15: Регистрация аккаунта')
     def test_case_15(self, selenium, registration_page):
         correct_registration_account(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title('Тест-кейс №16: Авторизация пользователя')
     def test_case_16(self, selenium, de_authorized, my_account_page):
         authorized_user(selenium)
-        pass
 
     @allure.story("Задание №1. Основной флоу клиента")
     @allure.title('Тест-кейс №17: Оформление заказа')
@@ -194,7 +189,6 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         clear_payment_form(selenium)
         completion_payment_form(selenium)
         check_summ_after_payment(selenium, summ_products)
-        pass
 
     @allure.story("Задание №2. Флоу с промокодом")
     @allure.title("Тест-кейс №1: Проверка ввода валидного промокода 'GIVEMEHALYAVA'")
@@ -205,7 +199,6 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         button_proceed_payment(selenium)
         promocode = 'GIVEMEHALYAVA'
         activate_promocode(selenium, summ_products, promocode)
-        pass
 
     @allure.story("Задание №2. Флоу с промокодом")
     @allure.title("Тест-кейс №2: Проверка ввода не валидного промокода 'DC120'")
@@ -218,7 +211,6 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         activate_promocode(selenium, summ_products, promocode)
         button_basket(selenium)
         delete_all_product(selenium)
-        pass
 
     @allure.story("Задание №2. Флоу с промокодом")
     @allure.title("Тест-кейс №4: Повторное применение промокода 'GIVEMEHALYAVA' одним пользователем")
@@ -244,7 +236,6 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
             clear_payment_form(selenium)
             completion_payment_form(selenium)
             check_summ_after_payment(selenium, summ_products)
-        pass
 
     @allure.story("Задание №3. Флоу с бонусной системой")
     @allure.title("Тест-кейс №1: Регистрация в бонусной программе")
@@ -252,4 +243,3 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         correct_registration_account(selenium)
         button_bonus_programm(selenium)
         apply_bonus_programm(selenium)
-        pass
