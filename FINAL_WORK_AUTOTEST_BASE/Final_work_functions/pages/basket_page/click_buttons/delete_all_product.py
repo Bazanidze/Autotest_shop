@@ -11,4 +11,3 @@ def delete_all_product(selenium):
         for position in range(count):
             selenium.find_element(By.XPATH, '(//a[@class="remove"])[1]').click()
             time.sleep(1.5)
-            pass

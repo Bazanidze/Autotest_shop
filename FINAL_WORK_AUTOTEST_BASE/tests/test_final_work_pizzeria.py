@@ -1,4 +1,5 @@
 import allure
+from playwright.sync_api import Playwright, Page
 
 from selenium.webdriver.common.by import By
 
@@ -56,6 +57,7 @@ from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.payment_page.completion
     completion_payment_form
 from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.pages.registration_page.registration_account import \
     correct_registration_account
+from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.playwright.block_server_promocode import block_server
 from FINAL_WORK_AUTOTEST_BASE.Final_work_functions.price_products.normal_price_product_and_option import \
     normal_price_product
 
@@ -209,12 +211,15 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
         button_proceed_payment(selenium)
         promocode = 'DC120'
         activate_promocode(selenium, summ_products, promocode)
-        button_basket(selenium)
-        delete_all_product(selenium)
+
+    @allure.story("Задание №2. Флоу с промокодом")
+    @allure.title("Тест-кейс №3: Проверка при не работающем сервере валидации промокодов")
+    def test_case_20(self, playwright: Playwright, page: Page):
+        block_server(playwright, page)
 
     @allure.story("Задание №2. Флоу с промокодом")
     @allure.title("Тест-кейс №4: Повторное применение промокода 'GIVEMEHALYAVA' одним пользователем")
-    def test_case_20(self, selenium, de_authorized, registration_page):
+    def test_case_21(self, selenium, de_authorized, registration_page):
         correct_registration_account(selenium)
         button_main(selenium)
         add_pizza_basket(selenium)
@@ -239,7 +244,7 @@ class TestsTask1(OpenPage, ClearBasket, DeAuthorized):
 
     @allure.story("Задание №3. Флоу с бонусной системой")
     @allure.title("Тест-кейс №1: Регистрация в бонусной программе")
-    def test_case_21(self, selenium, de_authorized, registration_page):
+    def test_case_22(self, selenium, de_authorized, registration_page):
         correct_registration_account(selenium)
         button_bonus_programm(selenium)
         apply_bonus_programm(selenium)
