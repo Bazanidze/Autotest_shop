@@ -1,10 +1,10 @@
 def normal_price_product(price_product):
     price_product = price_product[0:-1]
-    new_price_product = ''
+    new_price_product = ""
     for sym in price_product:
-        symbol = ','
+        symbol = ","
         if symbol == sym:
-            symbol = '.'
+            symbol = "."
             new_price_product += symbol
         else:
             new_price_product += sym
