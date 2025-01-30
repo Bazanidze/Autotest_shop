@@ -1,6 +1,6 @@
 АВТОТЕСТЫ ПО ИНТЕРНЕТ МАГАЗИНУ 'PIZZERIA'
 
-использовать окружение: enviroment_2
+использовать окружение: environment_2
 
 Все тесты находятся в папке: FINAL_WORK_AUTOTEST_BASE/tests/test_final_work_pizzeria.py
 
